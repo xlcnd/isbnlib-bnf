@@ -1,6 +1,6 @@
-A metadata plugin for [isbnlib](https://pypi.python.org/pypi/isbnlib) using the service **porbase.org** (for books in portuguese).
+A metadata plugin for [isbnlib](https://pypi.python.org/pypi/isbnlib) using the service **BnF Catalogue Général** (for books in french).
 
-After install, a new metadata provider (`porbase`) is available in `isbnlib`.
+After install, a new metadata provider (`bnf`) is available in `isbnlib`.
 
 
 **WARNING** this software is at beta level!
@@ -8,7 +8,7 @@ After install, a new metadata provider (`porbase`) is available in `isbnlib`.
 Give it a try with:
 
 ```bash
-$ pip install isbnlib-porbase
+$ pip install isbnlib-bnf
 ```
 
 
