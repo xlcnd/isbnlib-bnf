@@ -10,7 +10,9 @@ from isbnlib.dev.webquery import query as wquery
 
 LOGGER = logging.getLogger(__name__)
 UA = 'isbnlib (gzip)'
-SERVICE_URL = 'http://catalogue.bnf.fr/api/SRU?version=1.2&operation=searchRetrieve&query=bib.isbn%20all%20%22{isbn}%22&maximumRecords=1&recordSchema=dublincore'
+SERVICE_URL = 'http://catalogue.bnf.fr/api/SRU?version=1.2'\
+    '&operation=searchRetrieve&query=bib.isbn%20all%20%22{isbn}'\
+    '%22&maximumRecords=1&recordSchema=dublincore'
 
 
 def _get_text(topnode):
@@ -22,35 +24,52 @@ def _get_text(topnode):
     return text
 
 
+def _clean_author(author):
+    """Clean the Author field of some unnecessary annotations."""
+    author = author.replace('Auteur du texte', '')
+    if '/' in author:
+        author = author.split('/')[0]
+    if ';' in author:
+        author = author.split(';')[0]
+    if '(' in author:
+        author = author.split(')')[0] + ')'
+    return author.strip('., ')
+
+
 def parser_bnf(xml):
     """Parse the response from the BnF Catalogue Général service (France)."""
     # handle special case
-    if '<error>' in xml:
+    if 'numberOfRecords>0<' in xml:
         return {}
     # parse xml and extract canonical fields
     dom = parseString(xml)
-    # TODO check if recordsNumber equal 1
     keys = ('Title', 'Authors', 'Publisher', 'Year', 'Language')
     fields = ('dc:title', 'dc:creator', 'dc:publisher', 'dc:date',
               'dc:language')
     recs = {}
-    for key, field in zip(keys, fields):
-        nodes = dom.getElementsByTagName("oai_dc:dc")[0].getElementsByTagName(field)
-        txt = '|'.join([_get_text(node) for node in nodes])
-        recs[key] = u(txt)
-    # cleanning
-    recs['Publisher'] = recs['Publisher'].split('|')[0]
-    recs['Authors'] = recs['Authors'].split('|')
-    recs['Year'] = ''.join(c for c in recs['Year'] if c.isdigit())
-    recs['Title'] = recs['Title'].replace(' :', ':').replace('<', '').replace(
-        '>', '')
+    try:
+        for key, field in zip(keys, fields):
+            nodes = dom.getElementsByTagName("oai_dc:dc")[0]\
+                .getElementsByTagName(field)
+            txt = '|'.join([_get_text(node) for node in nodes])
+            recs[key] = u(txt)
+        # cleanning
+        recs['Publisher'] = recs['Publisher'].split('|')[0]
+        authors = recs['Authors'].split('|')
+        recs['Authors'] = [_clean_author(author) for author in authors]
+        recs['Year'] = ''.join(c for c in recs['Year'] if c.isdigit())
+        recs['Title'] = recs['Title'].replace('<', '').replace(
+            '>', '').split('/')[0].strip()
+        recs['Language'] = recs['Language'].split('|')[0]
+    except IndexError:
+        pass
     return recs
 
 
 def _mapper(isbn, records):
     """Make records canonical.
 
-       canonical: ISBN-13, Title, Authors, Publisher, Year, Language
+    canonical: ISBN-13, Title, Authors, Publisher, Year, Language
     """
     # handle special case
     if not records:  # pragma: no cover
