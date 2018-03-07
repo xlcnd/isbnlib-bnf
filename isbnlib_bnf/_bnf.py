@@ -28,7 +28,7 @@ def _clean_title(title):
     """Clean the Title field of some unnecessary annotations."""
     title = title.replace('<', '').replace('>', '')\
         .replace(': roman', '').split('/')[0]
-    return title.strip()
+    return title.strip(':.,; ')
 
 
 def _clean_author(author):
@@ -37,7 +37,7 @@ def _clean_author(author):
         .split('/')[0].split(';')[0]
     if '(' in author:
         author = author.split(')')[0] + ')'
-    return author.strip('., ')
+    return author.strip(':.,; ')
 
 
 def parser_bnf(xml):
