@@ -24,13 +24,17 @@ def _get_text(topnode):
     return text
 
 
+def _clean_title(title):
+    """Clean the Title field of some unnecessary annotations."""
+    title = title.replace('<', '').replace('>', '')\
+        .replace(': roman', '').split('/')[0]
+    return title.strip()
+
+
 def _clean_author(author):
     """Clean the Author field of some unnecessary annotations."""
-    author = author.replace('Auteur du texte', '')
-    if '/' in author:
-        author = author.split('/')[0]
-    if ';' in author:
-        author = author.split(';')[0]
+    author = author.replace('Auteur du texte', '')\
+        .split('/')[0].split(';')[0]
     if '(' in author:
         author = author.split(')')[0] + ')'
     return author.strip('., ')
@@ -58,8 +62,7 @@ def parser_bnf(xml):
         authors = recs['Authors'].split('|')
         recs['Authors'] = [_clean_author(author) for author in authors]
         recs['Year'] = ''.join(c for c in recs['Year'] if c.isdigit())
-        recs['Title'] = recs['Title'].replace('<', '').replace(
-            '>', '').split('/')[0].strip()
+        recs['Title'] = _clean_title(recs['Title'])
         recs['Language'] = recs['Language'].split('|')[0]
     except IndexError:
         pass
