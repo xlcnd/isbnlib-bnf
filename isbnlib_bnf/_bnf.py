@@ -65,7 +65,7 @@ def parser_bnf(xml):
         recs['Title'] = _clean_title(recs['Title'])
         recs['Language'] = recs['Language'].split('|')[0]
     except IndexError:
-        pass
+        LOGGER.debug('Check the parsing for BnF (possible error!)')
     return recs
 
 
