@@ -32,8 +32,7 @@ setup(
     entry_points={'isbnlib.metadata': ['bnf=isbnlib_bnf:query']},
     install_requires=["isbnlib>=3.8.3,<3.9.0"],
     license='LGPL v3',
-    description=
-    'A plugin for isbnlib that pulls metadata from BnF Catalogue Général (France).',
+    description='A plugin for isbnlib that pulls metadata from BnF Catalogue Général (France).',
     long_description=open('README.rst').read(),
     keywords='ISBN isbnlib BnF bibliographic-references',
     classifiers=[
