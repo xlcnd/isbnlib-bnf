@@ -29,7 +29,7 @@ setup(
     url='https://github.com/xlcnd/isbnlib-bnf',
     download_url='https://github.com/xlcnd/isbnlib-bnf/archive/v0.0.1.zip',
     packages=['isbnlib_bnf/'],
-    entry_points={'isbnlib.metadata': ['porbase=isbnlib_bnf:query']},
+    entry_points={'isbnlib.metadata': ['bnf=isbnlib_bnf:query']},
     install_requires=["isbnlib>=3.8.3,<3.9.0"],
     license='LGPL v3',
     description=
