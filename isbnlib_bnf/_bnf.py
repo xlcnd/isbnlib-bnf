@@ -61,7 +61,7 @@ def parser_bnf(xml):
         recs['Publisher'] = recs['Publisher'].split('|')[0]
         authors = recs['Authors'].split('|')
         recs['Authors'] = [_clean_author(author) for author in authors]
-        recs['Year'] = ''.join(c for c in recs['Year'] if c.isdigit())
+        recs['Year'] = u(''.join(c for c in recs['Year'] if c.isdigit())[:4])
         recs['Title'] = _clean_title(recs['Title'])
         recs['Language'] = recs['Language'].split('|')[0]
     except IndexError:
