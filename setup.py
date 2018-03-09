@@ -27,7 +27,7 @@ setup(
     author='xlcnd',
     author_email='xlcnd@outlook.com',
     url='https://github.com/xlcnd/isbnlib-bnf',
-    download_url='https://github.com/xlcnd/isbnlib-bnf/archive/v0.0.1.zip',
+    download_url='https://github.com/xlcnd/isbnlib-bnf/archive/v0.0.2.zip',
     packages=['isbnlib_bnf/'],
     entry_points={'isbnlib.metadata': ['bnf=isbnlib_bnf:query']},
     install_requires=["isbnlib>=3.8.3,<3.9.0"],
