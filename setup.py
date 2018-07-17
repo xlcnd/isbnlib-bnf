@@ -30,7 +30,7 @@ setup(
     download_url='https://github.com/xlcnd/isbnlib-bnf/archive/v0.0.2.zip',
     packages=['isbnlib_bnf/'],
     entry_points={'isbnlib.metadata': ['bnf=isbnlib_bnf:query']},
-    install_requires=["isbnlib>=3.8.3,<3.9.0"],
+    install_requires=["isbnlib>=3.9.1,<3.10.0"],
     license='LGPL v3',
     description='A plugin for isbnlib that pulls metadata from BnF Catalogue Général (France).',
     long_description=open('README.rst').read(),
