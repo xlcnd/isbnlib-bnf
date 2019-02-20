@@ -4,3 +4,7 @@
 from ._bnf import query
 
 __version__ = '0.0.3'
+
+__plugin_main_language__ = 'fr'
+__plugin_service_name__ = 'bnf'
+__plugin_type__ = 'metadata'
