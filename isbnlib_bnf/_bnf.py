@@ -64,8 +64,8 @@ def parser_bnf(xml):
         recs['Year'] = u(''.join(c for c in recs['Year'] if c.isdigit())[:4])
         recs['Title'] = _clean_title(recs['Title'])
         recs['Language'] = recs['Language'].split('|')[0]
-    except IndexError:
-        LOGGER.debug('Check the parsing for BnF (possible error!)')
+    except Exception as exc:
+        LOGGER.debug('Check the parsing for BnF (%r)', exc, exc_info=True)
     return recs
 
 
