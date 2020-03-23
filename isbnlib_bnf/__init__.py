@@ -3,7 +3,7 @@
 # pylint: skip-file
 from ._bnf import query
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 __plugin_main_language__ = 'fr'
 __plugin_service_name__ = 'bnf'
