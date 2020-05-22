@@ -36,7 +36,8 @@ def _clean_author(author):
     author = author.replace('Auteur du texte', '')\
         .split('/')[0].split(';')[0]
     if '(' in author:
-        author = author.split(')')[0] + ')'
+        # author = author.split(')')[0] + ')'
+        author = author.split('(')[0]
     return author.strip(':.,; ')
 
 
