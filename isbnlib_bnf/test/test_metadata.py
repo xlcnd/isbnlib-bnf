@@ -18,3 +18,14 @@ def test_query():
     assert_equals(len(repr(query('9782210760851'))) > 100, True)
 
     assert_equals(len(repr(query('9780000000'))) == 2, True)
+
+
+def test_metadata():
+    """Test the query of metadata (BnF Catalogue Général) with 'high level' queries."""
+    assert_equals(len(repr(meta('9782210760851', service='bnf'))) > 100, True)
+
+
+def test_quirk():
+    """Test the query of metadata (BnF Catalogue Général) for quirk."""
+    assert_equals(len(repr(query('2800121335'))) > 100, True)
+    assert_equals(len(repr(meta('2800121335', service='bnf'))) > 100, True)

@@ -4,6 +4,7 @@
 import logging
 from xml.dom.minidom import parseString
 
+from isbnlib import to_isbn10
 from isbnlib.dev import stdmeta
 from isbnlib.dev._bouth23 import u
 from isbnlib.dev.webquery import query as wquery
@@ -11,8 +12,8 @@ from isbnlib.dev.webquery import query as wquery
 LOGGER = logging.getLogger(__name__)
 UA = 'isbnlib (gzip)'
 SERVICE_URL = 'http://catalogue.bnf.fr/api/SRU?version=1.2'\
-    '&operation=searchRetrieve&query=bib.isbn%20all%20%22{isbn}'\
-    '%22&maximumRecords=1&recordSchema=dublincore'
+    '&operation=searchRetrieve&query={isbn}'\
+    '&maximumRecords=1&recordSchema=dublincore'
 
 
 def _get_text(topnode):
@@ -86,8 +87,15 @@ def _mapper(isbn, records):
 
 def query(isbn):
     """Query the BnF Catalogue Général service for metadata."""
+    # Quirk (see issue #1)
+    isbn10 = to_isbn10(isbn)
+    if isbn10:
+        isbn_query = "(bib.isbn%20all%20%22{isbn10}%22%20or%20bib.isbn%20"\
+                     "all%20%22{isbn}%22)".format(isbn10=isbn10, isbn=isbn)
+    else:
+        isbn_query = "bib.isbn%20all%20%22{isbn}%22".format(isbn=isbn)
     data = wquery(
-        SERVICE_URL.format(isbn=isbn), user_agent=UA, parser=parser_bnf)
+        SERVICE_URL.format(isbn=isbn_query), user_agent=UA, parser=parser_bnf)
     if not data:  # pragma: no cover
         LOGGER.debug('No data from BnF Catalogue Général for isbn %s', isbn)
         return {}
