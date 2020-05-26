@@ -109,3 +109,4 @@ release.*
 TODO
 LAB/
 *.vscode
+.changelog*
