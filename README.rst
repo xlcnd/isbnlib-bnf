@@ -31,6 +31,9 @@ After install, a new metadata provider (``bnf``) is available in isbnlib.
 For available plugins check_ here.
 
 
+.. _check: https://pypi.python.org/pypi?%3Aaction=search&term=isbnlib_&submit=search
+
+
 
 
 
