@@ -12,21 +12,21 @@ environment:
       PYTHON_ARCH: "64"
 
     - TOXENV: "py37"
-      TOXPYTHON: "C:\\Python35-x64\\python.exe"
+      TOXPYTHON: "C:\\Python37-x64\\python.exe"
       PYTHON_HOME: "C:\\Python37-x64"
       PYTHON_VERSION: "3.7"
       PYTHON_ARCH: "64"
 
-    - TOXENV: "py27"
-      TOXPYTHON: "C:\\Python27-x64\\python.exe"
-      PYTHON_HOME: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7"
+    - TOXENV: "py38"
+      TOXPYTHON: "C:\\Python38-x64\\python.exe"
+      PYTHON_HOME: "C:\\Python38-x64"
+      PYTHON_VERSION: "3.8"
       PYTHON_ARCH: "64"
 
-    - TOXENV: "py27"
-      TOXPYTHON: "C:\\Python27\\python.exe"
-      PYTHON_HOME: "C:\\Python27"
-      PYTHON_VERSION: "2.7"
+    - TOXENV: "py38"
+      TOXPYTHON: "C:\\Python38\\python.exe"
+      PYTHON_HOME: "C:\\Python38"
+      PYTHON_VERSION: "3.8"
       PYTHON_ARCH: "32"
 
 init:
