@@ -108,6 +108,11 @@ yop.*
 release.*
 TODO
 LAB/
-*.vscode
+.vscode
 .changelog*
-req*.in
+.editorconfig
+.project
+.style*
+.yam*
+.gitignore
+
