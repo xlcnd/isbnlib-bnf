@@ -1,18 +1,8 @@
-.. image:: https://coveralls.io/repos/github/xlcnd/isbnlib-bnf/badge.svg?branch=dev
-    :target: https://coveralls.io/github/xlcnd/isbnlib-bnf?branch=dev
-    :alt: Coverage Status
+
 
 .. image:: https://github.com/xlcnd/isbnlib-bnf/workflows/tests/badge.svg
     :target: https://github.com/xlcnd/isbnlib-bnf/actions
     :alt: Built Status
-
-.. image:: https://travis-ci.org/xlcnd/isbnlib-bnf.svg?branch=dev
-    :target: https://travis-ci.org/xlcnd/isbnlib-bnf
-    :alt: Built Status
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/xlcnd/isbnlib-bnf?branch=dev&svg=true
-    :target: https://ci.appveyor.com/project/xlcnd/isbnlib-bnf
-    :alt: Windows Built Status
 
 .. image:: https://img.shields.io/github/issues/xlcnd/isbnlib-bnf/bug.svg?label=bugs&style=flat
     :target: https://github.com/xlcnd/isbnlib-bnf/labels/bug
