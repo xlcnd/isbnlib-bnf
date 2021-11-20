@@ -2,4 +2,4 @@
 
 ## What's new?
 
-1. Fix project configuration.
+1. TENTATIVE...
