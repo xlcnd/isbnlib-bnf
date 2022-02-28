@@ -3,7 +3,7 @@
 # isort:skip_file
 
 # isbnlib-bnf -- an isbnlib plugin for BnF Catalogue Général (France)
-# Copyright (C) 2018-2021  Alexandre Lima Conde
+# Copyright (C) 2018-2022  Alexandre Lima Conde
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
